@@ -6,11 +6,18 @@
 ```
 docker create \
   --name=antennas \
-  -e TVHEADEND_URL=http://user:pass@x.x.x.x:9981 \
-  -e TVHEADEND_WEIGHT=300 \
-  -e TUNER_COUNT=6
+  -v <path/to/config>:/antennas/config \
   -p 5004:5004 \
   thejf/antennas
 ```
 
-Replace `http://user:pass@x.x.x.x:9981` to match your own Tvheadend settings, and you should be good to go! Note that `localhost` won't work, so you should preferably put in the IP address of your Tvheadend in full.
+This will mount a volume, set by yourself in path/to/config, that will need a config.yml to work. Example of a config.yml is [available here](https://github.com/TheJF/antennas/blob/master/config/config.yml), or below:
+```
+tvheadend_url: http://replace:me@x.x.x.x:9981
+tvheadend_weight: 300
+tuner_count: 6
+```
+
+Note, I'll eventually make this work with environment variables, Crystal is just not cooperating with me on this at the moment.
+
+
