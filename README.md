@@ -1,6 +1,6 @@
 # Antennas on Docker
 
-(Antennas)[https://github.com/thejf/antennas] is a Crystal port of tvhProxy which is a program that translates the Tvheadend API to emulate a HDHomeRun API. This is particularly useful to connect Plex's DVR feature to Tvheadend.
+[Antennas](https://github.com/thejf/antennas) is a Crystal port of tvhProxy which is a program that translates the Tvheadend API to emulate a HDHomeRun API. This is particularly useful to connect Plex's DVR feature to Tvheadend.
 
 ## Usage
 ```
