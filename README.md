@@ -6,7 +6,7 @@
 ```
 docker create \
   --name=antennas \
-  -v <path/to/config>:/tmp/config \
+  -v <path/to/config>:/opt/antennas/config \
   -p 5004:5004 \
   thejf/antennas
 ```
