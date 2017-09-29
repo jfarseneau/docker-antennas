@@ -6,11 +6,11 @@ RUN apt-get update && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN wget https://github.com/TheJF/antennas/archive/master.zip
 RUN unzip master.zip
-RUN mv antennas-master /opt/antennas
+RUN mv antennas-master /antennas
 
 EXPOSE 5004
 
-WORKDIR "/opt/antennas"
+WORKDIR "/antennas"
 RUN shards update && shards install
 RUN crystal build --release --no-debug src/antennas.cr
-CMD ["/opt/antennas/antennas"]
+CMD ["/antennas/antennas"]
