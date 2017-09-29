@@ -1,9 +1,16 @@
-FROM thejf/pre-antennas
+FROM crystallang/crystal:latest
 LABEL maintainer "jf.arseneau@gmail.com"
 
-ADD antennas-v1.0.0-linux-i386.tar.gz /tmp/
+RUN apt-get update && \
+    apt-get install -y build-essential wget unzip libevent-dev libssl-dev libxml2-dev libyaml-dev libgmp-dev git && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN wget https://github.com/TheJF/antennas/archive/master.zip
+RUN unzip master.zip
+RUN mv antennas-master /opt/antennas
 
 EXPOSE 5004
 
-WORKDIR "/tmp"
-CMD ["/tmp/antennas"]
+WORKDIR "/opt/antennas"
+RUN shards update && shards install
+RUN crystal build --release --no-debug src/antennas.cr
+CMD ["/opt/antennas/antennas"]
